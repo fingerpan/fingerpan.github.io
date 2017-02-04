@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="youngpan">
 <meta property="og:description" content="git是什么？  Git是目前世界上最流行的分布式版本控制系统，在我们工作中有很多的公司都是基于GIT这个系统来协同开发的。也是开发者必备技能。  Git是基于linxu系统的，可以说Git bash是一个简单的linxu命令行窗口。它本身也定制了很多命令。  接下来一起来记录一下Git 的一些命令行语句。
  注意： 本文并不是git教程，只是总结了命令行语句，方便以后开发时候查看">
-<meta property="og:updated_time" content="2017-02-04T14:50:09.345Z">
+<meta property="og:updated_time" content="2017-02-04T16:12:45.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git指令大全">
 <meta name="twitter:description" content="git是什么？  Git是目前世界上最流行的分布式版本控制系统，在我们工作中有很多的公司都是基于GIT这个系统来协同开发的。也是开发者必备技能。  Git是基于linxu系统的，可以说Git bash是一个简单的linxu命令行窗口。它本身也定制了很多命令。  接下来一起来记录一下Git 的一些命令行语句。
@@ -155,18 +155,18 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta custom-logo">
+      <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">youngpan</span>
+      <span class="site-title"></span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
     
-      <h1 class="site-subtitle" itemprop="description"></h1>
+      <h1 class="site-subtitle" itemprop="description">前端 angular 设计模式 js javascript css node</h1>
     
 </div>
 
@@ -453,9 +453,11 @@
 <li>查看冲突文件 <code>git diff</code></li>
 <li>注意，修改冲突文件之后，一定要提交到暂存区，再提交到仓库才能解决冲突。</li>
 </ul>
-<h3 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h3><h6 id="下载版本：git-clone-39-仓库地址-39"><a href="#下载版本：git-clone-39-仓库地址-39" class="headerlink" title="下载版本：git clone &#39;仓库地址&#39;"></a>下载版本：<code>git clone &#39;仓库地址&#39;</code></h6><pre><code>+ 下载远程仓库。
-+ 如果只需要下载最新一次提交，不需要下载整个仓库，加上参数 &apos;--depth&apos;
-</code></pre><h6 id="remote-命令使用"><a href="#remote-命令使用" class="headerlink" title="remote 命令使用"></a>remote 命令使用</h6><ul>
+<h3 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h3><h6 id="下载版本：git-clone-39-仓库地址-39"><a href="#下载版本：git-clone-39-仓库地址-39" class="headerlink" title="下载版本：git clone &#39;仓库地址&#39;"></a>下载版本：<code>git clone &#39;仓库地址&#39;</code></h6><ul>
+<li>下载远程仓库。</li>
+<li>如果只需要下载最新一次提交，不需要下载整个仓库，加上参数 ‘–depth’</li>
+</ul>
+<h6 id="remote-命令使用"><a href="#remote-命令使用" class="headerlink" title="remote 命令使用"></a>remote 命令使用</h6><ul>
 <li>添加主机： <code>git remote add &#39;主机名称&#39; &#39;仓库地址&#39;</code></li>
 <li>删除主机： <code>git remote rm &#39;主机名称&#39;</code></li>
 <li>查看已添加的主机:  <code>git remote</code></li>
@@ -464,7 +466,9 @@
 </ul>
 <h6 id="pull-拉取-git-pull-39-主机名称-39-master"><a href="#pull-拉取-git-pull-39-主机名称-39-master" class="headerlink" title="pull 拉取 git pull &#39;主机名称&#39;  master"></a>pull 拉取 <code>git pull &#39;主机名称&#39;  master</code></h6><ul>
 <li>默认名称为<code>origin</code></li>
-<li>从远程仓库pull新版本,也可以用远程地址代替主机： <code>git pull &#39;远程地址&#39; master</code><h6 id="push-提交到远程仓库：-git-push-39-主机名称-39-master"><a href="#push-提交到远程仓库：-git-push-39-主机名称-39-master" class="headerlink" title="push 提交到远程仓库： git push &#39;主机名称&#39; master"></a>push 提交到远程仓库： <code>git push &#39;主机名称&#39; master</code></h6></li>
+<li>从远程仓库pull新版本,也可以用远程地址代替主机： <code>git pull &#39;远程地址&#39; master</code></li>
+</ul>
+<h6 id="push-提交到远程仓-git-push-39-主机名称-39-master"><a href="#push-提交到远程仓-git-push-39-主机名称-39-master" class="headerlink" title="push 提交到远程仓 git push &#39;主机名称&#39; master"></a>push 提交到远程仓 <code>git push &#39;主机名称&#39; master</code></h6><ul>
 <li>默认主机名称为origin</li>
 <li>再本地仓库向远程仓库提交新版本，也可以i用远程地址代替主机：<code>git push &#39;远程地址&#39; master</code></li>
 </ul>
