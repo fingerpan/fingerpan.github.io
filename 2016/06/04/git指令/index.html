@@ -1,0 +1,779 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="git是什么？  Git是目前世界上最流行的分布式版本控制系统，在我们工作中有很多的公司都是基于GIT这个系统来协同开发的。也是开发者必备技能。  Git是基于linxu系统的，可以说Git bash是一个简单的linxu命令行窗口。它本身也定制了很多命令。  接下来一起来记录一下Git 的一些命令行语句。
+ 注意： 本文并不是git教程，只是总结了命令行语句，方便以后开发时候查看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git指令大全">
+<meta property="og:url" content="http://yoursite.com/2016/06/04/git指令/index.html">
+<meta property="og:site_name" content="youngpan">
+<meta property="og:description" content="git是什么？  Git是目前世界上最流行的分布式版本控制系统，在我们工作中有很多的公司都是基于GIT这个系统来协同开发的。也是开发者必备技能。  Git是基于linxu系统的，可以说Git bash是一个简单的linxu命令行窗口。它本身也定制了很多命令。  接下来一起来记录一下Git 的一些命令行语句。
+ 注意： 本文并不是git教程，只是总结了命令行语句，方便以后开发时候查看">
+<meta property="og:updated_time" content="2017-02-04T14:50:09.345Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git指令大全">
+<meta name="twitter:description" content="git是什么？  Git是目前世界上最流行的分布式版本控制系统，在我们工作中有很多的公司都是基于GIT这个系统来协同开发的。也是开发者必备技能。  Git是基于linxu系统的，可以说Git bash是一个简单的linxu命令行窗口。它本身也定制了很多命令。  接下来一起来记录一下Git 的一些命令行语句。
+ 注意： 本文并不是git教程，只是总结了命令行语句，方便以后开发时候查看">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'youngpan'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/04/git指令/"/>
+
+
+
+
+
+  <title> git指令大全 | youngpan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">youngpan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description"></h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/04/git指令/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="youngpan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/youngpan.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="youngpan">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="youngpan" src="images/youngpan.jpg">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                git指令大全
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-04T21:45:05+08:00">
+                2016-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="git是什么？"><a href="#git是什么？" class="headerlink" title="git是什么？"></a>git是什么？</h2><p>  Git是目前世界上最流行的分布式版本控制系统，在我们工作中有很多的公司都是基于GIT这个系统来协同开发的。也是开发者必备技能。<br>  Git是基于linxu系统的，可以说Git bash是一个简单的linxu命令行窗口。它本身也定制了很多命令。<br>  接下来一起来记录一下Git 的一些命令行语句。</p>
+<p> <strong>注意： 本文并不是git教程，只是总结了命令行语句，方便以后开发时候查看</strong></p>
+<a id="more"></a>
+<h2 id="配置个人信息"><a href="#配置个人信息" class="headerlink" title="配置个人信息"></a>配置个人信息</h2><ul>
+<li>姓名： <code>git config --global user.name &quot; your name &quot;</code></li>
+<li>个人邮箱： <code>git config --global user.email  &quot; your email &quot;</code></li>
+<li>删除错误配置： <code>git config --global unset  &quot;the KEY which you want to delete&quot;</code></li>
+<li>查看配置信息： <code>git config --glogal --list</code></li>
+</ul>
+<h2 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h2><h6 id="初始化一个空的仓库-：git-init"><a href="#初始化一个空的仓库-：git-init" class="headerlink" title="初始化一个空的仓库 ：git init"></a>初始化一个空的仓库 ：<code>git init</code></h6><ul>
+<li>这个命令是初始化一个.git 文件夹。里面存储项目的各个版本信息。</li>
+</ul>
+<h6 id="查看当前项目的状态-：git-status"><a href="#查看当前项目的状态-：git-status" class="headerlink" title="查看当前项目的状态 ：git status"></a>查看当前项目的状态 ：<code>git status</code></h6><ul>
+<li>这个命令可以查看当前项目的是否有文件改变，需要提交到暂存区或者仓库。</li>
+<li>也可以用命令 <code>git status -s</code>  查看简要的状态信息</li>
+</ul>
+<h6 id="将项目中的文件提交到暂存区：-git-add-39-filename-txt-39"><a href="#将项目中的文件提交到暂存区：-git-add-39-filename-txt-39" class="headerlink" title="将项目中的文件提交到暂存区： git add &#39;./filename.txt&#39;"></a>将项目中的文件提交到暂存区： <code>git add &#39;./filename.txt&#39;</code></h6><ul>
+<li>可以将你想提交的文件提交到暂存区，也可以使用提交全部的命令</li>
+<li><code>git add .</code>  或者  <code>git add *</code>;</li>
+</ul>
+<h6 id="将暂存区的文件提交到仓库：-git-commit-m-quot-此次提交的备注-quot"><a href="#将暂存区的文件提交到仓库：-git-commit-m-quot-此次提交的备注-quot" class="headerlink" title="将暂存区的文件提交到仓库： git commit -m &quot;此次提交的备注&quot;"></a>将暂存区的文件提交到仓库： <code>git commit -m &quot;此次提交的备注&quot;</code></h6><ul>
+<li>也可以 <code>git commit -m -c</code> 不需要备注信息。不推荐使用。每一次提交最好都备注当次提交代码的简要信息。</li>
+</ul>
+<h6 id="查看日志：git-log"><a href="#查看日志：git-log" class="headerlink" title="查看日志：git log"></a>查看日志：<code>git log</code></h6><ul>
+<li>或者：<code>git log --oneline</code> ————查看简要日志</li>
+<li>或者：<code>git log --graph</code>   ————查看图形化的日志信息，有分支情况。</li>
+<li>或者：<code>git reflog</code>  ————可以查看回退版本的信息。 配合回退版本查看。</li>
+</ul>
+<h2 id="gitignore-配置忽略文件"><a href="#gitignore-配置忽略文件" class="headerlink" title=".gitignore 配置忽略文件;"></a>.gitignore 配置忽略文件;</h2><h6 id="创建忽略文件-使用git-dash-支持的linus命令行：-touch-gitignore"><a href="#创建忽略文件-使用git-dash-支持的linus命令行：-touch-gitignore" class="headerlink" title="创建忽略文件,使用git dash 支持的linus命令行： touch .gitignore"></a>创建忽略文件,使用git dash 支持的linus命令行： <code>touch .gitignore</code></h6><ul>
+<li>忽略文件是让git 忽略指定的文件。让其不会提交到版本仓库中。</li>
+<li>.gitignore 文本中指定的文件是相对于.gitignore 文件的相对路径。</li>
+<li>忽略某个文件夹: <code>/node_module</code></li>
+<li>忽略某个文件：<code>./css/my.css</code></li>
+<li>忽略某一类文件：<code>./css/*.css</code></li>
+<li>忽略目录下的所有文件：<code>./css/.</code></li>
+<li>忽略所有名为”node_module”的文件夹：<code>node_module</code></li>
+<li>以”#”开头的为备注信息。<code># 这条信息是注释</code></li>
+</ul>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><h6 id="回退到上一次提交的版本状态：-git-reset-hard-Head"><a href="#回退到上一次提交的版本状态：-git-reset-hard-Head" class="headerlink" title="回退到上一次提交的版本状态： git reset --hard Head"></a>回退到上一次提交的版本状态： <code>git reset --hard Head</code></h6><ul>
+<li>回退到上上次提交的版本状态： <code>git reset --hard Head^^</code></li>
+<li>回退到第n次前提交的版本状态： <code>git reset --hard Head~n</code><h6 id="回退到具体的版本状态：git-reset-hard-版本号"><a href="#回退到具体的版本状态：git-reset-hard-版本号" class="headerlink" title="回退到具体的版本状态：git reset --hard [版本号]"></a>回退到具体的版本状态：<code>git reset --hard [版本号]</code></h6></li>
+<li>版本号为每一个版本的hash值，可以通过查看日志获取。</li>
+</ul>
+<h5 id="撤销对某个未提交的文件的修改：git-checkout-文件名"><a href="#撤销对某个未提交的文件的修改：git-checkout-文件名" class="headerlink" title="撤销对某个未提交的文件的修改：git checkout 文件名/.;"></a>撤销对某个未提交的文件的修改：<code>git checkout 文件名/.</code>;</h5><ul>
+<li>未提交的文件是指已经修改，但是没有add 过的文件。</li>
+<li>“.” 是指所有文件。</li>
+</ul>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h6 id="查看当前所有分支：-git-branch"><a href="#查看当前所有分支：-git-branch" class="headerlink" title="查看当前所有分支： git branch"></a>查看当前所有分支： <code>git branch</code></h6><h6 id="创建一个名为’dev’的分支：-git-branch-dev"><a href="#创建一个名为’dev’的分支：-git-branch-dev" class="headerlink" title="创建一个名为’dev’的分支： git branch dev"></a>创建一个名为’dev’的分支： <code>git branch dev</code></h6><h6 id="切换到dev分支：git-cheakout-dev"><a href="#切换到dev分支：git-cheakout-dev" class="headerlink" title="切换到dev分支：git cheakout dev"></a>切换到dev分支：<code>git cheakout dev</code></h6><ul>
+<li>注意，要与撤销对某个未提交的文件修改命令区分，命令一样，只是checkout 带的不同参数。</li>
+<li>创建并且切换到dev分支：<code>git checkout -b dev</code></li>
+</ul>
+<h6 id="在当前分支，合并dev分支：-git-merge-dev"><a href="#在当前分支，合并dev分支：-git-merge-dev" class="headerlink" title="在当前分支，合并dev分支： git merge dev"></a>在当前分支，合并dev分支： <code>git merge dev</code></h6><ul>
+<li>一般是在主分支’master’ 合并分支。</li>
+<li>合并,并且删除dev 分支： <code>git branch -d dev</code></li>
+</ul>
+<h6 id="对比不同分支：git-diff-分支1-分支2"><a href="#对比不同分支：git-diff-分支1-分支2" class="headerlink" title="对比不同分支：git diff 分支1 分支2"></a>对比不同分支：<code>git diff 分支1 分支2</code></h6><ul>
+<li>或者 <code>git difftool 分支1 分支2</code></li>
+</ul>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><ul>
+<li>每一次的分支合并，都可能带来冲突，冲突是由于两个程序员都同时修改了同一个文件造成的。<br>举例子说：如果master下创建了两个分支，分别是a分支，b分支，如果a分支中有人修改了a.js文件。并且合并了master和a分支。<br>而此时，b分支也修改了a.js文件，准备合并master,与 b分支，此时merge合并之后。就会产生冲突。</li>
+<li>冲突的解决，需要两个人协商之后由程序员删除修改重复之后，再次提交就可以解决。</li>
+<li>冲突是不可避免的，但是一定要与修改冲突文件的同事协商修改。</li>
+<li>查看冲突文件 <code>git diff</code></li>
+<li>注意，修改冲突文件之后，一定要提交到暂存区，再提交到仓库才能解决冲突。</li>
+</ul>
+<h3 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h3><h6 id="下载版本：git-clone-39-仓库地址-39"><a href="#下载版本：git-clone-39-仓库地址-39" class="headerlink" title="下载版本：git clone &#39;仓库地址&#39;"></a>下载版本：<code>git clone &#39;仓库地址&#39;</code></h6><pre><code>+ 下载远程仓库。
++ 如果只需要下载最新一次提交，不需要下载整个仓库，加上参数 &apos;--depth&apos;
+</code></pre><h6 id="remote-命令使用"><a href="#remote-命令使用" class="headerlink" title="remote 命令使用"></a>remote 命令使用</h6><ul>
+<li>添加主机： <code>git remote add &#39;主机名称&#39; &#39;仓库地址&#39;</code></li>
+<li>删除主机： <code>git remote rm &#39;主机名称&#39;</code></li>
+<li>查看已添加的主机:  <code>git remote</code></li>
+<li>查看远程主机信息： <code>git remote -v</code></li>
+<li>查看详细的主机信息：<code>git remote show &#39;主机名称&#39;</code></li>
+</ul>
+<h6 id="pull-拉取-git-pull-39-主机名称-39-master"><a href="#pull-拉取-git-pull-39-主机名称-39-master" class="headerlink" title="pull 拉取 git pull &#39;主机名称&#39;  master"></a>pull 拉取 <code>git pull &#39;主机名称&#39;  master</code></h6><ul>
+<li>默认名称为<code>origin</code></li>
+<li>从远程仓库pull新版本,也可以用远程地址代替主机： <code>git pull &#39;远程地址&#39; master</code><h6 id="push-提交到远程仓库：-git-push-39-主机名称-39-master"><a href="#push-提交到远程仓库：-git-push-39-主机名称-39-master" class="headerlink" title="push 提交到远程仓库： git push &#39;主机名称&#39; master"></a>push 提交到远程仓库： <code>git push &#39;主机名称&#39; master</code></h6></li>
+<li>默认主机名称为origin</li>
+<li>再本地仓库向远程仓库提交新版本，也可以i用远程地址代替主机：<code>git push &#39;远程地址&#39; master</code></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/youngpan.jpg"
+               alt="youngpan" />
+          <p class="site-author-name" itemprop="name">youngpan</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">随记</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fingerpan" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngpan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">陈仰潘</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>
