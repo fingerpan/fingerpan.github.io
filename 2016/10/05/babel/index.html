@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="babel," />
+  <meta name="keywords" content="babel,es6," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="关于babel;  浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换   注意！！babel只能将">
+<meta name="description" content="浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换   注意！！babel只能将普通的变量声明等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="babel">
 <meta property="og:url" content="http://yoursite.com/2016/10/05/babel/index.html">
 <meta property="og:site_name" content="youngpan">
-<meta property="og:description" content="关于babel;  浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换   注意！！babel只能将">
-<meta property="og:updated_time" content="2017-02-05T06:21:01.063Z">
+<meta property="og:description" content="浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换   注意！！babel只能将普通的变量声明等">
+<meta property="og:updated_time" content="2017-02-05T15:46:02.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="babel">
-<meta name="twitter:description" content="关于babel;  浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换   注意！！babel只能将">
+<meta name="twitter:description" content="浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换   注意！！babel只能将普通的变量声明等">
 
 
 
@@ -185,8 +185,6 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
             首页
           </a>
         </li>
@@ -194,8 +192,6 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -205,17 +201,21 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -333,6 +333,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -347,7 +352,7 @@
       
 
       
-        <h1 id="关于babel"><a href="#关于babel" class="headerlink" title="关于babel;"></a>关于babel;</h1><p>  浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。<br>现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。<br>   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换<br>   <strong>注意！！babel只能将普通的变量声明等方式，函数的命名方式转换，并没有办法将不支持的函数方法转换。</strong><br>所以需要在引入语法包。来支持新的扩展函数。<br><a id="more"></a></p>
+        <p>  浏览器对ES2015(es6)新的语法的支持并不是很理想。所以如果我们要实用es6来进行前端网址开发会带来一些问题。<br>现阶段，对于习惯写es6的攻城师来说，目前的解决方案是使用es6编写代码，最后将es6代码转为es5代码。<br>   babel 是一个将ES6甚至ES2017转化为ES5代码的一个工具包。在前端自动化构建中可以使用这个工具包进行代码的转换<br>   <strong>注意！！babel只能将普通的变量声明等方式，函数的命名方式转换，并没有办法将不支持的函数方法转换。</strong><br>所以需要在引入语法包。来支持新的扩展函数。<br><a id="more"></a></p>
 <h3 id="1-引入babel包"><a href="#1-引入babel包" class="headerlink" title="1.引入babel包"></a>1.引入babel包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install babel-cli -g</div></pre></td></tr></table></figure>
 <h3 id="2-配置-babelrc文件"><a href="#2-配置-babelrc文件" class="headerlink" title="2.配置.babelrc文件"></a>2.配置.babelrc文件</h3><p><strong>新建 .babelrc 文件。</strong></p>
 <ul>
@@ -406,6 +411,8 @@ npm install babel-preset-es2015 --save-dev
         <div class="post-tags">
           
             <a href="/tags/babel/" rel="tag"># babel</a>
+          
+            <a href="/tags/es6/" rel="tag"># es6</a>
           
         </div>
       
@@ -500,10 +507,10 @@ npm install babel-preset-es2015 --save-dev
 
           
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">2</span>
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
@@ -554,25 +561,26 @@ npm install babel-preset-es2015 --save-dev
   &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa green-color fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">youngpan</span>
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">陈仰潘</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
 
         
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
 
         
       </div>
@@ -684,6 +692,28 @@ npm install babel-preset-es2015 --save-dev
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
