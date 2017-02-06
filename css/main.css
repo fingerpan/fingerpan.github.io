@@ -1693,7 +1693,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d02b3c;
+  background: #4fb8cd;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2471,6 +2471,16 @@ b.music i:nth-child(4) {
 b.music i:nth-child(5) {
   -webkit-animation-delay: 0.4s;
 }
+.beat-love-icon {
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+  -webkit-animation: trans 2s infinite;
+  -o-animation: trans 2s infinite;
+  animation: trans 2s infinite;
+}
 @-moz-keyframes music {
   0% {
     -webkit-transform: scale(1, 0.1);
@@ -2537,6 +2547,42 @@ b.music i:nth-child(5) {
   }
   100% {
     -webkit-transform: scale(1, 0.1);
+  }
+}
+@-moz-keyframes trans {
+  50% {
+    -webkit-transform: scale(1.02, 0.87);
+    -moz-transform: scale(1.02, 0.87);
+    -ms-transform: scale(1.02, 0.87);
+    -o-transform: scale(1.02, 0.87);
+    transform: scale(1.02, 0.87);
+  }
+}
+@-webkit-keyframes trans {
+  50% {
+    -webkit-transform: scale(1.02, 0.87);
+    -moz-transform: scale(1.02, 0.87);
+    -ms-transform: scale(1.02, 0.87);
+    -o-transform: scale(1.02, 0.87);
+    transform: scale(1.02, 0.87);
+  }
+}
+@-o-keyframes trans {
+  50% {
+    -webkit-transform: scale(1.02, 0.87);
+    -moz-transform: scale(1.02, 0.87);
+    -ms-transform: scale(1.02, 0.87);
+    -o-transform: scale(1.02, 0.87);
+    transform: scale(1.02, 0.87);
+  }
+}
+@keyframes trans {
+  50% {
+    -webkit-transform: scale(1.02, 0.87);
+    -moz-transform: scale(1.02, 0.87);
+    -ms-transform: scale(1.02, 0.87);
+    -o-transform: scale(1.02, 0.87);
+    transform: scale(1.02, 0.87);
   }
 }
 h1,
