@@ -207,6 +207,8 @@ b.setting b {
   width: 20%;
   height: 100%;
   position: relative;
+  -webkit-animation: go 4s infinite linear;
+  -o-animation: go 4s infinite linear;
   animation: go 4s infinite linear;
 }
 b.setting i {
@@ -278,16 +280,24 @@ b.wifi i {
 b.wifi i:nth-child(1) {
   width: 600%;
   height: 600%;
+  -webkit-animation: wifi1 2s infinite;
+  -o-animation: wifi1 2s infinite;
   animation: wifi1 2s infinite;
 }
 b.wifi i:nth-child(2) {
   width: 450%;
   height: 450%;
   animation: wifi2 2s infinite;
+  -webkit-animation: wifi2 2s infinite;
+  -o-animation: wifi2 2s infinite;
+  animation: wifi2 2s infinite;
 }
 b.wifi i:nth-child(3) {
   width: 300%;
   height: 300%;
+  animation: wifi3 2s infinite;
+  -webkit-animation: wifi3 2s infinite;
+  -o-animation: wifi3 2s infinite;
   animation: wifi3 2s infinite;
 }
 b.wifi i:nth-child(4) {
