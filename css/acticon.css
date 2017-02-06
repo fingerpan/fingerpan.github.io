@@ -324,6 +324,9 @@ b.shock {
   border-radius: 10%;
   position: relative;
   animation: shock 1s infinite;
+  -webkit-animation: shock 1s infinite;
+  -o-animation: shock 1s infinite;
+  animation: shock 1s infinite;
 }
 b.shock i {
   position: absolute;
@@ -717,6 +720,9 @@ b.time::before {
   width: 3%;
   height: 40%;
   animation: time 60s steps(60) infinite;
+  -webkit-animation: time 60s steps(60) infinite;
+  -o-animation: time 60s steps(60) infinite;
+  animation: time 60s steps(60) infinite;
 }
 b.time::after {
   width: 5%;
@@ -761,6 +767,9 @@ b.help::before {
   height: 20px;
   border-radius: 50%;
   border: 10px solid #ddd;
+  animation: helpbefore 5s linear infinite;
+  -webkit-animation: helpbefore 5s linear infinite;
+  -o-animation: helpbefore 5s linear infinite;
   animation: helpbefore 5s linear infinite;
 }
 /*------NO.21 weixin----*/
