@@ -449,6 +449,9 @@ b.photo-box {
   top: 35%;
   left: 0;
   animation: photo 2s linear infinite;
+  -webkit-animation: photo 2s linear infinite;
+  -o-animation: photo 2s linear infinite;
+  animation: photo 2s linear infinite;
 }
 b.photo-box i:nth-child(1),
 b.photo-box i:nth-child(3) {
@@ -606,6 +609,9 @@ b.refresh i:nth-child(1) {
   -o-transform: translate(150%);
   transform: translate(150%);
   animation: refresh 1s infinite 0.12s linear;
+  -webkit-animation: refresh 1s infinite 0.12s linear;
+  -o-animation: refresh 1s infinite 0.12s linear;
+  animation: refresh 1s infinite 0.12s linear;
 }
 b.refresh i:nth-child(2) {
   -webkit-transform: translate(110%, 110%);
@@ -613,6 +619,9 @@ b.refresh i:nth-child(2) {
   -ms-transform: translate(110%, 110%);
   -o-transform: translate(110%, 110%);
   transform: translate(110%, 110%);
+  animation: refresh 1s infinite 0.24s linear;
+  -webkit-animation: refresh 1s infinite 0.24s linear;
+  -o-animation: refresh 1s infinite 0.24s linear;
   animation: refresh 1s infinite 0.24s linear;
 }
 b.refresh i:nth-child(3) {
@@ -630,6 +639,9 @@ b.refresh i:nth-child(4) {
   -o-transform: translate(-110%, 110%);
   transform: translate(-110%, 110%);
   animation: refresh 1s infinite 0.48s linear;
+  -webkit-animation: refresh 1s infinite 0.48s linear;
+  -o-animation: refresh 1s infinite 0.48s linear;
+  animation: refresh 1s infinite 0.48s linear;
 }
 b.refresh i:nth-child(5) {
   -webkit-transform: translate(-150%);
@@ -637,6 +649,9 @@ b.refresh i:nth-child(5) {
   -ms-transform: translate(-150%);
   -o-transform: translate(-150%);
   transform: translate(-150%);
+  animation: refresh 1s infinite 0.6s linear;
+  -webkit-animation: refresh 1s infinite 0.6s linear;
+  -o-animation: refresh 1s infinite 0.6s linear;
   animation: refresh 1s infinite 0.6s linear;
 }
 b.refresh i:nth-child(6) {
@@ -646,6 +661,9 @@ b.refresh i:nth-child(6) {
   -o-transform: translate(-110%, -110%);
   transform: translate(-110%, -110%);
   animation: refresh 1s infinite 0.72s linear;
+  -webkit-animation: refresh 1s infinite 0.72s linear;
+  -o-animation: refresh 1s infinite 0.72s linear;
+  animation: refresh 1s infinite 0.72s linear;
 }
 b.refresh i:nth-child(7) {
   -webkit-transform: translate(0, -150%);
@@ -654,6 +672,9 @@ b.refresh i:nth-child(7) {
   -o-transform: translate(0, -150%);
   transform: translate(0, -150%);
   animation: refresh 1s infinite 0.84s linear;
+  -webkit-animation: refresh 1s infinite 0.84s linear;
+  -o-animation: refresh 1s infinite 0.84s linear;
+  animation: refresh 1s infinite 0.84s linear;
 }
 b.refresh i:nth-child(8) {
   -webkit-transform: translate(110%, -110%);
@@ -661,6 +682,9 @@ b.refresh i:nth-child(8) {
   -ms-transform: translate(110%, -110%);
   -o-transform: translate(110%, -110%);
   transform: translate(110%, -110%);
+  animation: refresh 1s infinite 0.96s linear;
+  -webkit-animation: refresh 1s infinite 0.96s linear;
+  -o-animation: refresh 1s infinite 0.96s linear;
   animation: refresh 1s infinite 0.96s linear;
 }
 /*------NO.21 Time----*/
@@ -727,6 +751,9 @@ b.help::after {
   height: 20px;
   border: 3px solid rgba(153,153,153,0.6);
   animation: helpafter 5s infinite;
+  -webkit-animation: helpafter 5s infinite;
+  -o-animation: helpafter 5s infinite;
+  animation: helpafter 5s infinite;
   background-color: #fff;
 }
 b.help::before {
@@ -745,6 +772,8 @@ b.weixin {
   border-radius: 50%;
   position: relative;
   box-sizing: border-box;
+  -webkit-animation: weixin 5s linear infinite;
+  -o-animation: weixin 5s linear infinite;
   animation: weixin 5s linear infinite;
 }
 b.weixin-box {
