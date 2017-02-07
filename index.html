@@ -316,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascripte/" itemprop="url" rel="index">
-                    <span itemprop="name">javascripte</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -352,16 +352,17 @@
 
       
         
-          
-            <p>NAN,null,undefined 存在的意义。</p>
-<pre><code>typeof null       // &apos;object&apos;;
-null === null     // true;
-null === {}       //false;
-</code></pre><p>查询null的类型是object。可以说null类型就是object吗？<br>其实也可以这么说吧，但有有点牵强。<br>我个人的观点是： null 是一个特殊的，特定的对象，也就是说内存地址是固定的对象。用来形容一个空/非对象数据类型。<br>这里的非对象并不是指简单类型。也不是等于一个<code>{}</code>;</p>
-<p>在javascript中，这三个特殊的值，初学者一直都不知道这三个东西到底又什么用。在这里，我想简单的说一下这三个东西存在的意义。</p>
-<p>Undefined，顾名思义，就是“找不到”的意思。在Javascript中，它是一种数据类型，这个数据类型只有一个值，undefined。可以很通俗的说，这种数据类型是三大数据类型的一种补充，也是变量的一种状态描述。<br>为什么说是变量的一种状态描述呢，很好理解，从它的意思入手“没有找到”。javascript是一种弱类型的语言，与强类型语言的最大区别就是，当我们在声明变量的时候，并不需要对变量的类型进行声明。<br>比如说，我们声明一个变量a ;<br>在javascript我们可以这么声明<br>var a;<br>但是如果在java等其他强类型语言，我们必须类型声明。<br>声明一个整数型的变量a :   int  a;<br>声明一个字符串类型的a:    char a;<br>所以，当我们想要知道一个为赋值a 的时候，在强类型的语言中我们可以准确获得，因为我们已经声明了类型。但是在javascript中，我们并不能知道，因为我们只是声明了变量，也没有赋值。</p>
-
-          
+          <blockquote>
+<h5 id="NaN-null-undefined-存在的意义。"><a href="#NaN-null-undefined-存在的意义。" class="headerlink" title="NaN,null,undefined 存在的意义。"></a><em>NaN</em>,<em>null</em>,<em>undefined</em> 存在的意义。</h5><p>太极讲阴阳，八卦论黑白，而机器，则是0和1之间的博弈。机器硬件要运行，离不开软件编程语言这个软组织。命令只有是与否，真与假之分。从这点上。任何语言在设计上都遵循这一点。Brendan Eich只花费了1周的时间就打造出了js，却也离不开这一点。NaN,null,undefined都是这个逻辑的体现。<br>今天讲一讲我理解的 NaN,null,undefined;这三个类型值的作用.</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/07/瞎扯NAN-null-undefined/#more" rel="contents">
+              
+              Read Me &raquo
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -500,7 +501,7 @@ null === {}       //false;
       
         
           <p>在javascript这个弱类型的编程语言里，熟悉数据类型的转换使得我们开发变得更加灵活。一直以来，js的灵活性让我们开发变得灵活的同时，也让我们遇上很多大坑，强类型的程序员学习js前期会相当并不适应。</p>
-<p>但是js的魅力所在，就是它够灵活，如果能够熟悉js的特性，会让我们开发速度大大提高，<em>短路运算</em>，<em>隐性转换</em>，<em>变量提升</em>,<em>原型链</em>，<em>闭包操作</em>等，都是每一个前端程序员必知特性。<br>本文主要写</p>
+<p>但是js的魅力所在，就是它够灵活，如果能够熟悉js的特性，会让我们开发速度大大提高，<em>短路运算</em>，<em>隐性转换</em>，<em>变量提升</em>,<em>原型链</em>，<em>闭包操作</em>等，都是每一个前端程序员必知特性。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/07/说说变量类型的转换/#more" rel="contents">
