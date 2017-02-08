@@ -339,7 +339,23 @@
       
         
           
-            
+            <p>function setFontsize() {</p>
+<pre><code>var html = document.querySelector(&apos;html&apos;);
+
+var fontSize,
+    bodyWidth,
+    screenWidth = document.documentElement.clientWidth;
+
+if (html.getBoundingClientRect) {
+    bodyWidth = html.getBoundingClientRect().width;
+} else {
+    bodyWidth = screenWidth;
+}
+
+fontSize = bodyWidth * 100 / 375;
+html.style.fontSize = fontSize.toFixed(3) + &quot;px&quot;;
+</code></pre><p>}<br>    var eventName = ‘orientationchange’ in window ? ‘orientationchange’ : ‘resize’;<br>    window.addEventListener(eventName,setFontsize);<br>    setFontsize();</p>
+
           
         
       
