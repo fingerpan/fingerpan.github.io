@@ -1,0 +1,722 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,js基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="NaN,null,undefined 到底干啥子的。太极讲阴阳，八卦论黑白，而机器，则是0和1之间的博弈。机器硬件要运行，离不开软件编程语言这个软组织。命令只有是与否，真与假之分。从这点上。任何语言在设计上都遵循这一点。Brendan Eich只花费了1周的时间就打造出了js，却也离不开这一点。NaN,null,undefined都是这个逻辑的体现。今天讲一讲我理解的 NaN,null,unde">
+<meta property="og:type" content="article">
+<meta property="og:title" content="瞎扯NAN,null,undefined">
+<meta property="og:url" content="http://yoursite.com/2015/09/05/瞎扯NAN-null-undefined/index.html">
+<meta property="og:site_name" content="youngpan">
+<meta property="og:description" content="NaN,null,undefined 到底干啥子的。太极讲阴阳，八卦论黑白，而机器，则是0和1之间的博弈。机器硬件要运行，离不开软件编程语言这个软组织。命令只有是与否，真与假之分。从这点上。任何语言在设计上都遵循这一点。Brendan Eich只花费了1周的时间就打造出了js，却也离不开这一点。NaN,null,undefined都是这个逻辑的体现。今天讲一讲我理解的 NaN,null,unde">
+<meta property="og:updated_time" content="2017-02-08T01:21:57.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="瞎扯NAN,null,undefined">
+<meta name="twitter:description" content="NaN,null,undefined 到底干啥子的。太极讲阴阳，八卦论黑白，而机器，则是0和1之间的博弈。机器硬件要运行，离不开软件编程语言这个软组织。命令只有是与否，真与假之分。从这点上。任何语言在设计上都遵循这一点。Brendan Eich只花费了1周的时间就打造出了js，却也离不开这一点。NaN,null,undefined都是这个逻辑的体现。今天讲一讲我理解的 NaN,null,unde">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'youngpan'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/09/05/瞎扯NAN-null-undefined/"/>
+
+
+
+
+
+  <title> 瞎扯NAN,null,undefined | youngpan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title"></span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">前端 angular 设计模式 js javascript css node</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-acticon">
+          <a href="/acticon" rel="section">
+            
+            项目
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/09/05/瞎扯NAN-null-undefined/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="youngpan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/youngpan.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="youngpan">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="youngpan" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                瞎扯NAN,null,undefined
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-05T19:07:20+08:00">
+                2015-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<h5 id="NaN-null-undefined-到底干啥子的。"><a href="#NaN-null-undefined-到底干啥子的。" class="headerlink" title="NaN,null,undefined 到底干啥子的。"></a><em>NaN</em>,<em>null</em>,<em>undefined</em> 到底干啥子的。</h5><p>太极讲阴阳，八卦论黑白，而机器，则是0和1之间的博弈。机器硬件要运行，离不开软件编程语言这个软组织。命令只有是与否，真与假之分。从这点上。任何语言在设计上都遵循这一点。Brendan Eich只花费了1周的时间就打造出了js，却也离不开这一点。NaN,null,undefined都是这个逻辑的体现。<br>今天讲一讲我理解的 NaN,null,undefined;这三个类型值的作用.</p>
+</blockquote>
+<a id="more"></a>
+<p>我们先看看这三个的解释。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NaN   // 表示一个非数字。</div><div class="line">null  // 表示一个非对象，或者说空对象。</div><div class="line">undefined //表示一个变量为定义。</div></pre></td></tr></table></figure>
+<h3 id="1-undefined"><a href="#1-undefined" class="headerlink" title="1. undefined"></a>1. <em>undefined</em></h3><p>Undefined，顾名思义，就是“找不到”的意思。在Javascript中，它是一种<em>数据类型</em>，这个数据类型只有一个值————<em>undefined</em>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typeof undefined        // undefined</div><div class="line">undefined === undefined  // true</div></pre></td></tr></table></figure></p>
+<p>可以很通俗的说，这种数据类型是三大数据类型的一种补充，也是变量的一种状态描述。为什么说是变量的一种状态描述，很好理解，从它的意思入手——“没有找到/未定义”。javascript是一种弱类型的语言，与强类型语言的最大区别就是，当我们在声明变量的时候，并不需要对变量的类型进行声明。比如说，我们声明一个变量a ;在javascript我们可以这么声明</p>
+<pre><code>var a;
+</code></pre><p>但是如果在java等其他强类型语言，我们必须类型声明。</p>
+<pre><code>声明一个整数型的变量a :   int  a;   // a 的类型是整数
+声明一个字符串类型的a:    char a;   // a 的数据类型是字符串
+</code></pre><p>所以，当我们想要知道变量a类型的时候，在强类型的语言中我们可以准确获得，因为我们已经声明了类型。但是在javascript中，我们并不能知道，因为我们只是声明了变量，也没有赋值。怎么办？js使用一个新的数据类型来对这种情况进行赋值表示，也就是我们的undefined。所以，我一直这么理解undefined</p>
+<ul>
+<li><em>undefined</em> 是一种数据类型，表示变量未定义或未赋值，或者对象的属性和方法为未定义。</li>
+</ul>
+<p><strong>现在我们想想，到底这个undefined 存在有什么意义？如果吗没有它会这么样？</strong></p>
+<ul>
+<li>如果没有undefined，那么我们<code>typeof</code>一个没有赋值的变量a, a到底显示什么？ 报错？ 还是..？</li>
+<li>如果我们引用一个为定义的对象属性？ 我们也会选择报错吗？ 如果你是要语言设计作者，你会这么设计？</li>
+</ul>
+<h3 id="2-NaN"><a href="#2-NaN" class="headerlink" title="2. NaN"></a>2. <em>NaN</em></h3><p>先来看看一些有趣的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typeof NaN     // number</div><div class="line">NaN === NaN    // false</div><div class="line">Boolean(NaN)   // false</div></pre></td></tr></table></figure></p>
+<p>我们都知道，js中有隐性转换这个特性，而隐性转换的成功率到底要为多少？没有疑问，js设计成百分之百，如果不是百分之百，那么选择报错也是跟尴尬的事情。js追求要弱类型，要灵活，那就彻底一点的灵活。<br>可以说,NaN也是为了这个而服务的。它代表着一个非数字。如果一个数据实在找不到可行的转换规则，那么就直接返回一个NaN。这个特殊的值，可以减少很多报错。</p>
+<p>要注意: <code>NaN === NaN</code> 这个表达式为<code>false</code>,</p>
+<h3 id="3-null"><a href="#3-null" class="headerlink" title="3. null"></a>3. <em>null</em></h3><p>同样的，我们看看一下查询结果：</p>
+<pre><code>typeof null       // &apos;object&apos;;
+null === null     // true;
+null === {}       //false;
+</code></pre><ul>
+<li>查询null的类型是object。直接说null类型就是object么？<br>其实也可以这么说吧，但有有点牵强。我个人的观点是： null 是一个特殊的，特定的对象，也就是说内存地址是固定的对象。用来形容一个空/非对象数据类型。这里的非对象并不是指简单类型。也不是等于一个<code>{}</code>;</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/js基础/" rel="tag"># js基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/14/说说变量类型的转换/" rel="prev" title="说说变量类型的转换">
+                说说变量类型的转换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/youngpan.jpg"
+               alt="youngpan" />
+          <p class="site-author-name" itemprop="name">youngpan</p>
+          <p class="site-description motion-element" itemprop="description">做一个有态度的人。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">随记</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fingerpan" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa base-color beat-love-icon fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngpan</span>
+</div>
+<div clasee="power-by">
+ <b class="music">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </b>
+    <span>Published with <a href="https://hexo.io" target="_blank">Hexo</a> using <a clasee="theme-link" href="http://theme-next.iissnan.com/" target="_blank">NexT</a> theme, hosted on Github.</span>
+</div>
+
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
