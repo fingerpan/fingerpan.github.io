@@ -642,7 +642,7 @@ pre .xml .cdata,
 pre .special,
 pre .number,
 pre .formula {
-  color: #718c00;
+  color: #2bb48a;
 }
 pre .title,
 pre .css .hexcolor {
@@ -1710,7 +1710,7 @@ em {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c13c42;
+  background: #03399d;
 }
 .links-of-blogroll {
   font-size: 13px;

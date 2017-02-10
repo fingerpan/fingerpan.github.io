@@ -1,0 +1,813 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="REG,学习笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="正则表达式是学习的一个难点，记忆强度强度比较大，需要经常复习回顾与应用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式基本规则">
+<meta property="og:url" content="http://yoursite.com/2016/03/10/正则表达式基本规则/index.html">
+<meta property="og:site_name" content="youngpan">
+<meta property="og:description" content="正则表达式是学习的一个难点，记忆强度强度比较大，需要经常复习回顾与应用。">
+<meta property="og:updated_time" content="2017-02-10T14:49:00.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式基本规则">
+<meta name="twitter:description" content="正则表达式是学习的一个难点，记忆强度强度比较大，需要经常复习回顾与应用。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'youngpan'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/03/10/正则表达式基本规则/"/>
+
+
+
+
+
+  <title> 正则表达式基本规则 | youngpan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title"></span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">前端 angular 设计模式 js javascript css node</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-acticon">
+          <a href="/acticon" rel="section">
+            
+            项目
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/10/正则表达式基本规则/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="youngpan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/youngpan.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="youngpan">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="youngpan" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                正则表达式基本规则
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-10T20:18:38+08:00">
+                2016-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study-notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Study notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>正则表达式是学习的一个难点，记忆强度强度比较大，需要经常复习回顾与应用。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="正则的最最最基本用法"><a href="#正则的最最最基本用法" class="headerlink" title="正则的最最最基本用法"></a>正则的最最最基本用法</h2><p><strong>声明一个正则的两种方式</strong></p>
+<ul>
+<li>var reg = /abc/</li>
+<li>var reg2 = new RegExp(“abc”);<br>第一种方式，是使用直接声明的方式，这个时候，需要使用<em>//</em>来包裹匹配规则。<br>第二种方式，是使用正则表达式的构造函数方式创建，匹配规则需要以字符串的形式作为参数传入给构造函数。</li>
+</ul>
+<p><em>^</em> 匹配一行的开头</p>
+<h2 id="特殊字符的匹配前要加转译符号"><a href="#特殊字符的匹配前要加转译符号" class="headerlink" title="特殊字符的匹配前要加转译符号 \"></a>特殊字符的匹配前要加转译符号 <em>\</em></h2><table>
+<thead>
+<tr>
+<th>写法</th>
+<th>匹配</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\o</td>
+<td>NUL字符(\u0000)</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符(\u0009)</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符(\u000A)</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符(\u000B)</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符(\u000C)</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符(\u000D)</td>
+</tr>
+<tr>
+<td>\xnn</td>
+<td>由十六进制数nn指定的拉丁字符，例如，\x0A 等价于 \n</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>由十六进制数xxxx指定的Unicode字符，例如 \u0009 等级于 \t</td>
+</tr>
+</tbody>
+</table>
+<h4 id="在正则表达式中，许多标点符号具有特殊的含义。"><a href="#在正则表达式中，许多标点符号具有特殊的含义。" class="headerlink" title="在正则表达式中，许多标点符号具有特殊的含义。"></a>在正则表达式中，许多标点符号具有特殊的含义。</h4><pre><code>^   $  .  +  ?  =  !  :  |  \  /  (  ) [  ] {  }
+</code></pre><h5 id="字符类（characset-class）"><a href="#字符类（characset-class）" class="headerlink" title="字符类（characset class）"></a>字符类（characset class）</h5><p><strong>将一个直接量字符单独放进括号里面就成了字符类了，字符类的意思是一些字符的集合。</strong><br>将字符单独放入方括号[]内，表示，匹配括号内的任意字符，字符之间不需要隔开。例如，正则表达式<code>/[abc]/</code> ，和字符’a’,’b’,’c’,中的任意一个字符都匹配。同时也可以通过<em>^</em>符号来定义否定字符配，它表示匹配所有不包含在方括号里面的字符，例如，正则表达式<code>/[^abc]/</code> 可以匹配除了字符’a’,’b’,’b’之外的任意字符。</p>
+<p>匹配规则上，也可以使用连接符<em>-</em>来表示字符的范围。要匹配小写字母，可以使用 <code>/[a-z]/</code> 。要匹配拉丁字母表中任何字母和数字，则可以使用表达式<code>/[a-zA-Z0-9]/</code></p>
+<pre><code>/[abcd]/            匹配括号内的任意字符
+/[^abcd]/           匹配除了括号内字符之外的任意字符
+/[a-zA-Z0-9]/       匹配拉丁表中的所有字母和数字。
+</code></pre><p><strong>特殊直接量 [\b]</strong></p>
+<p>当我们要匹配一个<em>退格</em>字符的时候，是通过一个\b来表示的，而在javascript当中，我们需要使用带有一个\b的字符集来匹配一个<em>退格</em>字符。<br>而不能只单单使用<em>\b</em>，而需要写[\b]</p>
+<h5 id="特殊字符类。"><a href="#特殊字符类。" class="headerlink" title="特殊字符类。"></a>特殊字符类。</h5><p>由于某些字符类非常常用，因此javascript的正则表达式中，使用了一些特殊的字母的转译字符来表示他们。例如，<em>\s</em>  (小写s)匹配的是空格符，制表符和其他Unicode 空白符; <em>\S</em> (大写S)匹配的是非Unicode空白的字符。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>匹配</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\w</td>
+<td>任何ASCII字符组成的单词，等价于 <em>[a-zA-Z0-9]</em></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非ASCII字符，等价于 <em>[^a-zA-Z0-9]</em></td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意空格符，制表符，可以理解为匹配空的字符串。如空格 ‘ ‘,’/n’</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意非空Unicode空白字符。等价于 <em>[^\d]</em></td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配任意ASCII数字字符。等价于 <em>[0-9]</em></td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配除了ASCII数字字符之外的任意字符，等价于<em>[^0-9]</em></td>
+</tr>
+</tbody>
+</table>
+<p>例子：</p>
+<pre><code>/[\d\s]/  匹配任意数字或者空格字符。
+/[\w]/    匹配任意实体字符，包括ASCII的26个大小写字母字符和数字字符。
+</code></pre><h2 id="获取url中域名、协议正则"><a href="#获取url中域名、协议正则" class="headerlink" title="获取url中域名、协议正则"></a>获取url中域名、协议正则</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取url中域名、协议正则 'http://xxx.xx/xxx','https://xxx.xx/xxx','//xxx.xx/xxx'</span></div><div class="line">/^(http(?:|s)\:)*\/\/([^\/]+)/.test(<span class="string">"http://www.baidu.com"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 必须有协议</span></div><div class="line">/^[a-zA-Z]+:\/\<span class="comment">//.test("http://www.baidu.com");</span></div></pre></td></tr></table></figure>
+<!-- more -->
+<h2 id="去除首尾的‘-’"><a href="#去除首尾的‘-’" class="headerlink" title="去除首尾的‘/’"></a>去除首尾的‘/’</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//去除首尾的‘/’</span></div><div class="line">input = input.replace(<span class="regexp">/^\/*|\/*$/g</span>,<span class="string">''</span>);</div></pre></td></tr></table></figure>
+<h2 id="javascript-、javascript-void-0"><a href="#javascript-、javascript-void-0" class="headerlink" title="javascript:: 、javascript:void(0)"></a>javascript:: 、javascript:void(0)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">href.match(<span class="regexp">/^(javascript\s*\:|#)/</span>);</div></pre></td></tr></table></figure>
+<h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"access_token=dcb90862-29fb-4b03-93ff-5f0a8f546250; refresh_token=702f4815-a0ff-456c-82ce-24e4d7d619e6; account_uid=1361177947320160506170322436"</span>;</div><div class="line">str.match(<span class="regexp">/account_uid=([^\=]+(\;)|(.*))/ig</span>);</div></pre></td></tr></table></figure>
+<h2 id="匹配后缀"><a href="#匹配后缀" class="headerlink" title="匹配后缀"></a>匹配后缀</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  var strRegex = "(.jpg|.gif|.txt)";</div><div class="line">  var re=new RegExp(strRegex);</div><div class="line">  if (re.test(str))&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">/(.jpg|.gif)+(\?|\#|$)/.test('a/b/c.jpgsss'); //=&gt; false</div><div class="line">/(.jpg|.gif)+(\?|\#|$)/.test('a/b/c.jpg?'); //=&gt; true</div></pre></td></tr></table></figure>
+<h2 id="匹配一些字符"><a href="#匹配一些字符" class="headerlink" title="匹配一些字符"></a>匹配一些字符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'asdf html-webpack-plugin for "index/index.html" asdfasdf'</span>;</div><div class="line">str.match(<span class="regexp">/html-webpack-plugin for \"(.*)\"/ig</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">RegExp</span>.$<span class="number">1</span>) <span class="comment">//=&gt;index/index.html</span></div></pre></td></tr></table></figure>
+<h2 id="关键字符替换"><a href="#关键字符替换" class="headerlink" title="关键字符替换"></a>关键字符替换</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'css/[hash:8].index-index.css'</span>.replace(<span class="regexp">/\[(?:(\w+):)?(contenthash|hash)(?::([a-z]+\d*))?(?::(\d+))?\]/ig</span>,<span class="string">'(.*)'</span>);</div><div class="line"><span class="comment">//=&gt; css/(.*).index-index.css</span></div></pre></td></tr></table></figure>
+<h2 id="替换参数中的值"><a href="#替换参数中的值" class="headerlink" title="替换参数中的值"></a>替换参数中的值</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str  = <span class="string">'&lt;!DOCTYPE html&gt;&lt;html manifest="../../cache.manifest" lang="en"&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;'</span>;</div><div class="line">str.replace(<span class="regexp">/&lt;html[^&gt;]*manifest="([^"]*)"[^&gt;]*&gt;/</span>,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> word.replace(<span class="regexp">/manifest="([^"]*)"/</span>,<span class="string">'manifest="'</span>+url+<span class="string">'"'</span>);</div><div class="line">&#125;).replace(<span class="regexp">/&lt;html(\s?[^\&gt;]*\&gt;)/</span>,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(word.indexOf(<span class="string">'manifest'</span>)) <span class="keyword">return</span> word;</div><div class="line">    <span class="keyword">return</span> word.replace(<span class="string">'&lt;html'</span>,<span class="string">'&lt;html manifest="'</span>+url+<span class="string">'"'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//原：&lt;!DOCTYPE html&gt;&lt;html manifest="../../cache.manifest" lang="en"&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;</span></div><div class="line"><span class="comment">//替换成=&gt; &lt;!DOCTYPE html&gt;&lt;html manifest="cache.manifest" lang="en"&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="调换"><a href="#调换" class="headerlink" title="调换"></a>调换</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">"Doe, John"</span>;</div><div class="line">name.replace(<span class="regexp">/(\w+)\s*, \s*(\w+)/</span>, <span class="string">"$2 $1"</span>);</div><div class="line"><span class="comment">//=&gt; "John Doe"</span></div></pre></td></tr></table></figure>
+<h2 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'asfdf === sdfaf ##'</span></div><div class="line">str.match(<span class="regexp">/[^===]+(?=[===])/g</span>) <span class="comment">// 截取 ===之前的内容</span></div><div class="line"></div><div class="line">str.replace(<span class="regexp">/\n/g</span>,<span class="string">''</span>)  <span class="comment">// 替换字符串中的 \n 换行字符</span></div></pre></td></tr></table></figure>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h3 id="小数点后几位验证"><a href="#小数点后几位验证" class="headerlink" title="小数点后几位验证"></a>小数点后几位验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 精确到1位小数</span></div><div class="line">/^[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]*$|^[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]*\.[<span class="number">0</span><span class="number">-9</span>]$|^<span class="number">0</span>\.[<span class="number">0</span><span class="number">-9</span>]$/.test(<span class="number">1.2</span>);</div><div class="line"></div><div class="line"><span class="comment">// 精确到2位小数</span></div><div class="line">/^[<span class="number">0</span><span class="number">-9</span>]+(.[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;)?$/.test(<span class="number">1.221</span>);</div></pre></td></tr></table></figure>
+<h3 id="校验密码强度"><a href="#校验密码强度" class="headerlink" title="校验密码强度"></a>校验密码强度</h3><p>必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&#123;<span class="number">8</span>,<span class="number">10</span>&#125;$/.test(<span class="string">"weeeeeeeW2"</span>);</div></pre></td></tr></table></figure>
+<h3 id="校验中文"><a href="#校验中文" class="headerlink" title="校验中文"></a>校验中文</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/^[\u4e00-\u9fa5]&#123;<span class="number">0</span>,&#125;$/.test(<span class="string">"但是d"</span>); <span class="comment">//false</span></div><div class="line">/^[\u4e00-\u9fa5]&#123;<span class="number">0</span>,&#125;$/.test(<span class="string">"但是"</span>); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h3 id="由数字、26个英文字母或下划线组成的字符串"><a href="#由数字、26个英文字母或下划线组成的字符串" class="headerlink" title="由数字、26个英文字母或下划线组成的字符串"></a>由数字、26个英文字母或下划线组成的字符串</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^\w+$/.test(<span class="string">"ds2_@#"</span>); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h3 id="18位身份证号码校验"><a href="#18位身份证号码校验" class="headerlink" title="18位身份证号码校验"></a>18位身份证号码校验</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/^[<span class="number">1</span><span class="number">-9</span>]\d&#123;<span class="number">5</span>&#125;[<span class="number">1</span><span class="number">-9</span>]\d&#123;<span class="number">3</span>&#125;((<span class="number">0</span>\d)|(<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>]))(([<span class="number">0</span>|<span class="number">1</span>|<span class="number">2</span>]\d)|<span class="number">3</span>[<span class="number">0</span><span class="number">-1</span>])\d&#123;<span class="number">3</span>&#125;([<span class="number">0</span><span class="number">-9</span>]|X)$/.test(<span class="string">"11112319220403281X"</span>);</div><div class="line"><span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h3 id="校验日期"><a href="#校验日期" class="headerlink" title="校验日期"></a>校验日期</h3><p>“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/^(?:(?!<span class="number">0000</span>)[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>&#125;-(?:(?:<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>])-(?:<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|<span class="number">1</span>[<span class="number">0</span><span class="number">-9</span>]|<span class="number">2</span>[<span class="number">0</span><span class="number">-8</span>])|(?:<span class="number">0</span>[<span class="number">13</span><span class="number">-9</span>]|<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>])-(?:<span class="number">29</span>|<span class="number">30</span>)|(?:<span class="number">0</span>[<span class="number">13578</span>]|<span class="number">1</span>[<span class="number">02</span>])<span class="number">-31</span>)|(?:[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;(?:<span class="number">0</span>[<span class="number">48</span>]|[<span class="number">2468</span>][<span class="number">048</span>]|[<span class="number">13579</span>][<span class="number">26</span>])|(?:<span class="number">0</span>[<span class="number">48</span>]|[<span class="number">2468</span>][<span class="number">048</span>]|[<span class="number">13579</span>][<span class="number">26</span>])<span class="number">00</span>)<span class="number">-02</span><span class="number">-29</span>)$/.test(<span class="string">"0007-12-22"</span>);</div><div class="line"><span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="常见匹配规则"><a href="#常见匹配规则" class="headerlink" title="常见匹配规则"></a>常见匹配规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div></pre></td><td class="code"><pre><div class="line">整数或者小数：^[0-9]+\.&#123;0,1&#125;[0-9]&#123;0,2&#125;$</div><div class="line">只能输入数字：&quot;^[0-9]*$&quot;。</div><div class="line">只能输入n位的数字：&quot;^\d&#123;n&#125;$&quot;。</div><div class="line">只能输入至少n位的数字：&quot;^\d&#123;n,&#125;$&quot;。</div><div class="line">只能输入m~n位的数字：。&quot;^\d&#123;m,n&#125;$&quot;</div><div class="line">只能输入零和非零开头的数字：&quot;^(0|[1-9][0-9]*)$&quot;。</div><div class="line">只能输入有两位小数的正实数：&quot;^[0-9]+(.[0-9]&#123;2&#125;)?$&quot;。</div><div class="line">只能输入有1~3位小数的正实数：&quot;^[0-9]+(.[0-9]&#123;1,3&#125;)?$&quot;。</div><div class="line">只能输入非零的正整数：&quot;^\+?[1-9][0-9]*$&quot;。</div><div class="line">只能输入非零的负整数：&quot;^\-[1-9][]0-9&quot;*$。</div><div class="line">只能输入长度为3的字符：&quot;^.&#123;3&#125;$&quot;。</div><div class="line">只能输入由26个英文字母组成的字符串：&quot;^[A-Za-z]+$&quot;。</div><div class="line">只能输入由26个大写英文字母组成的字符串：&quot;^[A-Z]+$&quot;。</div><div class="line">只能输入由26个小写英文字母组成的字符串：&quot;^[a-z]+$&quot;。</div><div class="line">只能输入由数字和26个英文字母组成的字符串：&quot;^[A-Za-z0-9]+$&quot;。</div><div class="line">只能输入由数字、26个英文字母或者下划线组成的字符串：&quot;^\w+$&quot;。</div><div class="line">验证用户密码：&quot;^[a-zA-Z]\w&#123;5,17&#125;$&quot;正确格式为：以字母开头，长度在6~18之间，只能包含字符、数字和下划线。</div><div class="line">验证是否含有^%&amp;&apos;,;=?$\&quot;等字符：&quot;[^%&amp;&apos;,;=?$\x22]+&quot;。</div><div class="line">只能输入汉字：&quot;^[\u4e00-\u9fa5]&#123;0,&#125;$&quot;</div><div class="line">验证Email地址：&quot;^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$&quot;。</div><div class="line">验证InternetURL：&quot;^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$&quot;。</div><div class="line">验证电话号码：&quot;^(\(\d&#123;3,4&#125;-)|\d&#123;3.4&#125;-)?\d&#123;7,8&#125;$&quot;正确格式为：&quot;XXX-XXXXXXX&quot;、&quot;XXXX-XXXXXXXX&quot;、&quot;XXX-XXXXXXX&quot;、&quot;XXX-XXXXXXXX&quot;、&quot;XXXXXXX&quot;和&quot;XXXXXXXX&quot;。</div><div class="line">验证身份证号（15位或18位数字）：&quot;^\d&#123;15&#125;|\d&#123;18&#125;$&quot;。</div><div class="line">验证一年的12个月：&quot;^(0?[1-9]|1[0-2])$&quot;正确格式为：&quot;01&quot;～&quot;09&quot;和&quot;1&quot;～&quot;12&quot;。</div><div class="line">验证一个月的31天：&quot;^((0?[1-9])|((1|2)[0-9])|30|31)$&quot;正确格式为；&quot;01&quot;～&quot;09&quot;和&quot;1&quot;～&quot;31&quot;。 匹配中文字符的正则表达式： [\u4e00-\u9fa5]</div><div class="line"></div><div class="line">匹配双字节字符(包括汉字在内)：[^\x00-\xff]</div><div class="line"></div><div class="line">应用：计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）</div><div class="line">String.prototype.len=function()&#123;return this.replace(/[^\x00-\xff]/g,&quot;aa&quot;).length;&#125;</div><div class="line"></div><div class="line">匹配空行的正则表达式：\n[\s| ]*\r</div><div class="line"></div><div class="line">匹配html标签的正则表达式：&lt;(.*)&gt;(.*)&lt;\/(.*)&gt;|&lt;(.*)\/&gt;</div><div class="line"></div><div class="line">匹配首尾空格的正则表达式：(^\s*)|(\s*$)</div><div class="line"></div><div class="line">应用：javascript中没有像vbscript那样的trim函数，我们就可以利用这个表达式来实现，如下：</div><div class="line"></div><div class="line">String.prototype.trim = function()</div><div class="line">&#123;</div><div class="line">return this.replace(/(^\s*)|(\s*$)/g, &quot;&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">利用正则表达式分解和转换IP地址：</div><div class="line"></div><div class="line">下面是利用正则表达式匹配IP地址，并将IP地址转换成对应数值的Javascript程序：</div><div class="line"></div><div class="line">function IP2V(ip)</div><div class="line">&#123;</div><div class="line">re=/(\d+)\.(\d+)\.(\d+)\.(\d+)/g //匹配IP地址的正则表达式</div><div class="line">if(re.test(ip))</div><div class="line">&#123;</div><div class="line">return RegExp.$1*Math.pow(255,3))+RegExp.$2*Math.pow(255,2))+RegExp.$3*255+RegExp.$4*1</div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;</div><div class="line">throw new Error(&quot;Not a valid IP address!&quot;)</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">不过上面的程序如果不用正则表达式，而直接用split函数来分解可能更简单，程序如下：</div><div class="line"></div><div class="line">var ip=&quot;10.100.20.168&quot;</div><div class="line">ip=ip.split(&quot;.&quot;)</div><div class="line">alert(&quot;IP值是：&quot;+(ip[0]*255*255*255+ip[1]*255*255+ip[2]*255+ip[3]*1))</div><div class="line"></div><div class="line">匹配Email地址的正则表达式：\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</div><div class="line"></div><div class="line">匹配网址URL的正则表达式：http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?</div><div class="line"></div><div class="line"></div><div class="line">利用正则表达式限制网页表单里的文本框输入内容：</div><div class="line"></div><div class="line">用正则表达式限制只能输入中文：onkeyup=&quot;value=value.replace(/[^\u4E00-\u9FA5]/g,&apos;&apos;)&quot; onbeforepaste=&quot;clipboardData.setData(&apos;text&apos;,clipboardData.getData(&apos;text&apos;).replace(/[^\u4E00-\u9FA5]/g,&apos;&apos;))&quot;</div><div class="line"></div><div class="line">用正则表达式限制只能输入全角字符： onkeyup=&quot;value=value.replace(/[^\uFF00-\uFFFF]/g,&apos;&apos;)&quot; onbeforepaste=&quot;clipboardData.setData(&apos;text&apos;,clipboardData.getData(&apos;text&apos;).replace(/[^\uFF00-\uFFFF]/g,&apos;&apos;))&quot;</div><div class="line"></div><div class="line">用正则表达式限制只能输入数字：onkeyup=&quot;value=value.replace(/[^\d]/g,&apos;&apos;) &quot;onbeforepaste=&quot;clipboardData.setData(&apos;text&apos;,clipboardData.getData(&apos;text&apos;).replace(/[^\d]/g,&apos;&apos;))&quot;</div><div class="line"></div><div class="line">用正则表达式限制只能输入数字和英文：onkeyup=&quot;value=value.replace(/[\W]/g,&apos;&apos;) &quot;onbeforepaste=&quot;clipboardData.setData(&apos;text&apos;,clipboardData.getData(&apos;text&apos;).replace(/[^\d]/g,&apos;&apos;))&quot;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配中文字符的正则表达式： [\u4e00-\u9fa5]</div><div class="line"></div><div class="line">评注：匹配中文还真是个头疼的事，有了这个表达式就好办了</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配双字节字符(包括汉字在内)：[^\x00-\xff]</div><div class="line"></div><div class="line">评注：可以用来计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配空白行的正则表达式：\n\s*\r</div><div class="line"></div><div class="line">评注：可以用来删除空白行</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配HTML标记的正则表达式：&lt;(\S*?)[^&gt;]*&gt;.*?|&lt;.*? /&gt;</div><div class="line"></div><div class="line">评注：网上流传的版本太糟糕，上面这个也仅仅能匹配部分，对于复杂的嵌套标记依旧无能为力</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配首尾空白字符的正则表达式：^\s*|\s*$</div><div class="line"></div><div class="line">评注：可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配Email地址的正则表达式：\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</div><div class="line"></div><div class="line">评注：表单验证时很实用</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配网址URL的正则表达式：[a-zA-z]+://[^\s]*</div><div class="line"></div><div class="line">评注：网上流传的版本功能很有限，上面这个基本可以满足需求</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]&#123;4,15&#125;$</div><div class="line"></div><div class="line">评注：表单验证时很实用</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配国内电话号码：\d&#123;3&#125;-\d&#123;8&#125;|\d&#123;4&#125;-\d&#123;7&#125;</div><div class="line"></div><div class="line">评注：匹配形式如 0511-4405222 或 021-87888822</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配腾讯QQ号：[1-9][0-9]&#123;4,&#125;</div><div class="line"></div><div class="line">评注：腾讯QQ号从10000开始</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配中国邮政编码：[1-9]\d&#123;5&#125;(?!\d)</div><div class="line"></div><div class="line">评注：中国邮政编码为6位数字</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配身份证：\d&#123;15&#125;|\d&#123;18&#125;</div><div class="line"></div><div class="line">评注：中国的身份证为15位或18位</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配ip地址：\d+\.\d+\.\d+\.\d+</div><div class="line"></div><div class="line">评注：提取ip地址时有用</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配特定数字：</div><div class="line"></div><div class="line">^[1-9]\d*$　 　 //匹配正整数</div><div class="line"></div><div class="line">^-[1-9]\d*$ 　 //匹配负整数</div><div class="line"></div><div class="line">^-?[1-9]\d*$　　 //匹配整数</div><div class="line"></div><div class="line">^[1-9]\d*|0$　 //匹配非负整数（正整数 + 0）</div><div class="line"></div><div class="line">^-[1-9]\d*|0$　　 //匹配非正整数（负整数 + 0）</div><div class="line"></div><div class="line">^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$　　 //匹配正浮点数</div><div class="line"></div><div class="line">^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$　 //匹配负浮点数</div><div class="line"></div><div class="line">^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$　 //匹配浮点数</div><div class="line"></div><div class="line">^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$　　 //匹配非负浮点数（正浮点数 + 0）</div><div class="line"></div><div class="line">^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$　　//匹配非正浮点数（负浮点数 + 0）</div><div class="line"></div><div class="line">评注：处理大量数据时有用，具体应用时注意修正</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">匹配特定字符串：</div><div class="line"></div><div class="line">^[A-Za-z]+$　　//匹配由26个英文字母组成的字符串</div><div class="line"></div><div class="line">^[A-Z]+$　　//匹配由26个英文字母的大写组成的字符串</div><div class="line"></div><div class="line">^[a-z]+$　　//匹配由26个英文字母的小写组成的字符串</div><div class="line"></div><div class="line">^[A-Za-z0-9]+$　　//匹配由数字和26个英文字母组成的字符串</div><div class="line"></div><div class="line">^\w+$　　//匹配由数字、26个英文字母或者下划线组成的字符串</div><div class="line"></div><div class="line">评注：最基本也是最常用的一些表达式</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">整理出来的一些常用的正则表达式所属分类: JScript  (三)</div><div class="line"></div><div class="line">Email : /^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$/</div><div class="line"></div><div class="line">isEmail1 : /^\w+([\.\-]\w+)*\@\w+([\.\-]\w+)*\.\w+$/;</div><div class="line"></div><div class="line">isEmail2 : /^.*@[^_]*$/;</div><div class="line"></div><div class="line">Phone : /^((\(\d&#123;3&#125;\))|(\d&#123;3&#125;\-))?(\(0\d&#123;2,3&#125;\)|0\d&#123;2,3&#125;-)?[1-9]\d&#123;6,7&#125;$/</div><div class="line"></div><div class="line">Mobile : /^((\(\d&#123;3&#125;\))|(\d&#123;3&#125;\-))?13\d&#123;9&#125;$/</div><div class="line"></div><div class="line">Url : /^http:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&amp;_~`@[\]\&apos;:+!]*([^&lt;&gt;\&quot;\&quot;])*$/</div><div class="line"></div><div class="line">IdCard : /^\d&#123;15&#125;(\d&#123;2&#125;[A-Za-z0-9])?$/</div><div class="line"></div><div class="line">Currency : /^\d+(\.\d+)?$/</div><div class="line"></div><div class="line">Number : /^\d+$/</div><div class="line"></div><div class="line">Code : /^[1-9]\d&#123;5&#125;$/</div><div class="line"></div><div class="line">QQ : /^[1-9]\d&#123;4,8&#125;$/</div><div class="line"></div><div class="line">Integer : /^[-\+]?\d+$/</div><div class="line"></div><div class="line">Double : /^[-\+]?\d+(\.\d+)?$/</div><div class="line"></div><div class="line">English : /^[A-Za-z]+$/</div><div class="line"></div><div class="line">Chinese : /^[\u0391-\uFFE5]+$/</div><div class="line"></div><div class="line">UnSafe : /^(([A-Z]*|[a-z]*|\d*|[-_\~!@#\$%\^&amp;\*\.\(\)\[\]\&#123;\&#125;&lt;&gt;\?\\\/\&apos;\&quot;]*)|.&#123;0,5&#125;)$|\s/</div><div class="line"></div><div class="line">PassWord :^[\\w]&#123;6,12&#125;$</div><div class="line"></div><div class="line">ZipCode : ^[\\d]&#123;6&#125;</div><div class="line"></div><div class="line">/^(\+\d+ )?(\(\d+\) )?[\d ]+$/; //这个是国际通用的电话号码判断</div><div class="line"></div><div class="line">/^(1[0-2]\d|\d&#123;1,2&#125;)$/; //这个是年龄的判断</div><div class="line"></div><div class="line">/^\d+\.\d&#123;2&#125;$/;  //这个是判断输入的是否为货币值</div><div class="line"></div><div class="line"> &lt;!-- IP地址有效性验证函数--&gt;</div><div class="line"></div><div class="line"> &lt;script language=javascript runat=server&gt;</div><div class="line"></div><div class="line">    ip_ip = &apos;(25[0-5]|2[0-4]\\d|1\\d\\d|\\d\\d|\\d)&apos;;</div><div class="line"></div><div class="line">    ip_ipdot = ip + &apos;\\.&apos;;</div><div class="line"></div><div class="line">    isIPaddress = new RegExp(&apos;^&apos;+ip_ipdot+ip_ipdot+ipdot+ip_ip+&apos;$&apos;);</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">应用：计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）</div><div class="line"></div><div class="line">String.prototype.len=function()&#123;return this.replace([^\x00-\xff]/g,&quot;aa&quot;).length;&#125;</div><div class="line"></div><div class="line">应用：javascript中没有像vbscript那样的trim函数，我们就可以利用这个表达式来实现，如下：</div><div class="line"></div><div class="line">String.prototype.trim = function()</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    return this.replace(/(^\s*)|(\s*$)/g, &quot;&quot;);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">匹配空行的正则表达式：\n[\s| ]*\r</div><div class="line"></div><div class="line">匹配HTML标记的正则表达式：/&lt;(.*)&gt;.*&lt;\/\1&gt;|&lt;(.*) \/&gt;/</div><div class="line"></div><div class="line">匹配首尾空格的正则表达式：(^\s*)|(\s*$)</div><div class="line"></div><div class="line">匹配Email地址的正则表达式：\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</div><div class="line"></div><div class="line">匹配网址URL的正则表达式：http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">^\d+$　　//匹配非负整数（正整数 + 0）</div><div class="line"></div><div class="line">^[0-9]*[1-9][0-9]*$　　//匹配正整数</div><div class="line"></div><div class="line">^((-\d+)|(0+))$　　//匹配非正整数（负整数 + 0）</div><div class="line"></div><div class="line">^-[0-9]*[1-9][0-9]*$　　//匹配负整数</div><div class="line"></div><div class="line">^-?\d+$　　　　//匹配整数</div><div class="line"></div><div class="line">^\d+(\.\d+)?$　　//匹配非负浮点数（正浮点数 + 0）</div><div class="line"></div><div class="line">^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$　//匹配正浮点数</div><div class="line"></div><div class="line">^((-\d+(\.\d+)?)|(0+(\.0+)?))$　　//匹配非正浮点数（负浮点数 + 0）</div><div class="line"></div><div class="line">^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$ //匹配负浮点数</div><div class="line"></div><div class="line">^(-?\d+)(\.\d+)?$</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/REG/" rel="tag"># REG</a>
+          
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/06/alloy-finger-源码注释/" rel="next" title="alloy_finger 源码注释">
+                <i class="fa fa-chevron-left"></i> alloy_finger 源码注释
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/18/浏览器的重绘与重排/" rel="prev" title="浏览器的重绘与重排">
+                浏览器的重绘与重排 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/youngpan.jpg"
+               alt="youngpan" />
+          <p class="site-author-name" itemprop="name">youngpan</p>
+          <p class="site-description motion-element" itemprop="description">做一个有态度的人。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">随记</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fingerpan" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa base-color beat-love-icon fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngpan</span>
+</div>
+<div clasee="power-by">
+ <b class="music">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </b>
+    <span>Published with <a href="https://hexo.io" target="_blank">Hexo</a> using <a clasee="theme-link" href="http://theme-next.iissnan.com/" target="_blank">NexT</a> theme, hosted on Github.</span>
+</div>
+
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

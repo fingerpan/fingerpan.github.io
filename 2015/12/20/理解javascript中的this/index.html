@@ -1,0 +1,748 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端工程师 javascipt css html angular node 设计模式 vue" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在学习javascript的过程中，有时候对于this的指向感觉迷迷糊糊的，在查阅了相关资料之后针对javascript中的this做一个总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解javascript中的this">
+<meta property="og:url" content="http://yoursite.com/2015/12/20/理解javascript中的this/index.html">
+<meta property="og:site_name" content="youngpan">
+<meta property="og:description" content="在学习javascript的过程中，有时候对于this的指向感觉迷迷糊糊的，在查阅了相关资料之后针对javascript中的this做一个总结。">
+<meta property="og:updated_time" content="2017-02-10T14:50:01.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解javascript中的this">
+<meta name="twitter:description" content="在学习javascript的过程中，有时候对于this的指向感觉迷迷糊糊的，在查阅了相关资料之后针对javascript中的this做一个总结。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'youngpan'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/12/20/理解javascript中的this/"/>
+
+
+
+
+
+  <title> 理解javascript中的this | youngpan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title"></span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">前端 angular 设计模式 js javascript css node</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-acticon">
+          <a href="/acticon" rel="section">
+            
+            项目
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/20/理解javascript中的this/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="youngpan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/youngpan.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="youngpan">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="youngpan" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                理解javascript中的this
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-20T14:26:57+08:00">
+                2015-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在学习javascript的过程中，有时候对于this的指向感觉迷迷糊糊的，在查阅了相关资料之后针对javascript中的this做一个总结。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="全局执行"><a href="#全局执行" class="headerlink" title="全局执行"></a>全局执行</h1><hr>
+<p>　　首先，我们在全局环境中看看它的this是什么：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//浏览器环境，可以看到打印出了 window 对象</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line"></div><div class="line"><span class="comment">// Window &#123;speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage, sessionStorage: Storage, webkitStorageInfo: DeprecatedStorageInfo…&#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//node环境，可以看到打印出了 global 对象</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line"></div><div class="line"><span class="comment">// global</span></div></pre></td></tr></table></figure>
+<h5 id="总结：在全局作用域中它的-this-执行当前的全局对象（浏览器端是-Window，node-中是-global）。"><a href="#总结：在全局作用域中它的-this-执行当前的全局对象（浏览器端是-Window，node-中是-global）。" class="headerlink" title="　　总结：在全局作用域中它的 this 执行当前的全局对象（浏览器端是 Window，node 中是 global）。"></a>　　总结：在全局作用域中它的 this 执行当前的全局对象（浏览器端是 Window，node 中是 global）。</h5><h1 id="函数中执行"><a href="#函数中执行" class="headerlink" title="函数中执行"></a>函数中执行</h1><hr>
+<h4 id="纯粹的函数调用"><a href="#纯粹的函数调用" class="headerlink" title="纯粹的函数调用"></a>纯粹的函数调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">test();</div><div class="line"></div><div class="line"><span class="comment">// Window &#123;speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage, sessionStorage: Storage, webkitStorageInfo: DeprecatedStorageInfo…&#125;</span></div></pre></td></tr></table></figure>
+<p>　　我们可以看到，一个函数被直接调用的时候，属于全局调用，这时候它的 this 指向 全局对象；</p>
+<h4 id="严格模式-‘use-strict’"><a href="#严格模式-‘use-strict’" class="headerlink" title="严格模式 ‘use strict’;"></a>严格模式 ‘use strict’;</h4><p>　　如果在严格模式的情况下执行纯粹的函数调用，那么这里的的 this 并不会指向全局，而是 undefined，这样的做法是为了消除 js 中一些不严谨的行为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">test(); <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
+<p>　　当然，把它放在一个立即执行函数中会更好，避免了污染全局：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">  "use strict"</span>;</div><div class="line">　<span class="built_in">console</span>.log(<span class="keyword">this</span>);     <span class="comment">// undefined</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<h1 id="作为对象的方法调用"><a href="#作为对象的方法调用" class="headerlink" title="作为对象的方法调用"></a>作为对象的方法调用</h1><hr>
+<p>　　当一个函数被当作一个对象的方法调用的时候：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span>,</div><div class="line">  <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj.foo();      <span class="comment">// 'Guoch'</span></div></pre></td></tr></table></figure></p>
+<p>　　这时候，this 指向当前的这个对象；当然，我们还可以这么做：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span>,</div><div class="line">  <span class="attr">foo</span>: test</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj.foo();      <span class="comment">// 'Guoch'</span></div></pre></td></tr></table></figure></p>
+<p>　　同样不变，因为在 js 中一切都是对象，函数也是一个对象，对于 test ，它只是一个函数名，函数的引用，它指向这个函数，当 foo = test，foo 同样也指向了这个函数。</p>
+<p>　　如果把对象的方法赋值给一个变量，然后直接调用这个变量呢：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span>,</div><div class="line">  <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> test = obj.foo;</div><div class="line">test();     <span class="comment">// Window</span></div></pre></td></tr></table></figure></p>
+<p>　　可以看到，这时候 this 执行了全局，当我们把 test = obj.foo ，test 直接指向了一个函数的引用，这时候，其实和 obj 这个对象没有关系了，所以，它是被当作一个普通函数来直接调用，因此，this 指向全局对象。</p>
+<h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><hr>
+<p>　　我们经常在回调函数里面会遇到一些问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span>,</div><div class="line">  <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">foo2</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    setTimeout(<span class="keyword">this</span>.foo, <span class="number">1000</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj.foo2();</div></pre></td></tr></table></figure></p>
+<p>　　执行这段代码我们会发现两次打印出来的 this 是不一样的：</p>
+<p>　　第一次是 foo2 中直接打印 this，这里指向 obj 这个对象，我们毋庸置疑；但是在 setTimeout 中执行的 this.foo ，却指向了全局对象，这里不是把它当作函数的方法使用吗？这一点经常让很多初学者疑惑；<br>　　其实，setTimeout 也只是一个函数而已，函数必然有可能需要参数，我们把 this.foo 当作一个参数传给 setTimeout 这个函数，就像它需要一个 fun 参数，在传入参数的时候，其实做了个这样的操作 fun = this.foo，看到没有，这里我们直接把 fun 指向 this.foo 的引用；执行的时候其实是执行了 fun() 所以已经和 obj 无关了，它是被当作普通函数直接调用的，因此 this 指向全局对象。这个问题是很多异步回调函数中普遍会碰到的；</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><hr>
+<p>　　为了解决这个问题，我们可以利用闭包的特性来处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span>,</div><div class="line">  <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">foo2</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);  <span class="comment">// Window</span></div><div class="line"></div><div class="line">      <span class="built_in">console</span>.log(_this);  <span class="comment">// Object &#123;name: "Guoch"&#125;</span></div><div class="line">    &#125;, <span class="number">1000</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj.foo2();</div></pre></td></tr></table></figure></p>
+<p>　　可以看到直接用 this 仍然是 Window；因为 foo2 中的 this 是指向 obj，我们可以先用一个变量 _this 来储存，然后在回调函数中使用 _this，就可以指向当前的这个对象了；</p>
+<h3 id="setTimeout-的另一个问题"><a href="#setTimeout-的另一个问题" class="headerlink" title="setTimeout 的另一个问题"></a>setTimeout 的另一个问题</h3><hr>
+<p>　　之前说过，如果直接执行回调函数而没有绑定作用域，那么它的 this 是指向全局对象(window)，在严格模式下会指向 undefined，然而在 setTimeout 中的回调函数在严格模式下却表现出不同：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">setTimeout(foo, <span class="number">1</span>);     <span class="comment">// window</span></div></pre></td></tr></table></figure></p>
+<p>　　按理说我们加了严格模式，foo 调用也没有指定 this，应该是出来 undefined，但是这里仍然出现了全局对象，难道是严格模式失效了吗？并不，即使在严格模式下，setTimeout 方法在调用传入函数的时候，如果这个函数没有指定了的 this，那么它会做一个隐式的操作—-自动地注入全局上下文，等同于调用 foo.apply(window) 而非 foo()；</p>
+<p>　　当然，如果我们在传入函数的时候已经指定 this，那么就不会被注入全局对象，比如： setTimeout(foo.bind(obj), 1);</p>
+<p>[<a href="http://stackoverflow.com/questions/21957030/why-is-window-still-defined-in-this-strict-mode-code" target="_blank" rel="external">http://stackoverflow.com/questions/21957030/why-is-window-still-defined-in-this-strict-mode-code</a>]</p>
+<h1 id="作为一个构造函数使用"><a href="#作为一个构造函数使用" class="headerlink" title="作为一个构造函数使用"></a>作为一个构造函数使用</h1><hr>
+<p>　　在 js 中，为了实现类，我们需要定义一些构造函数，在调用一个构造函数的时候需要加上 new 这个关键字：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'Guoch'</span>);    <span class="comment">// Person &#123;name: "Guoch"&#125;</span></div></pre></td></tr></table></figure></p>
+<p>　　我们可以看到当作构造函数调用时，this 指向了这个构造函数调用时候实例化出来的对象；当然，构造函数其实也是一个函数，如果我们把它当作一个普通函数执行，这个 this 仍然执行全局：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = Person(<span class="string">'Guoch'</span>);<span class="comment">// Window</span></div></pre></td></tr></table></figure></p>
+<p>　　其区别在于，如何调用函数（new）。</p>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><hr>
+<p>　　在 ES6 的新规范中，加入了箭头函数，它和普通函数最不一样的一点就是 this 的指向了，还记得在上文中（作为对象的方法调用-一些坑-解决）我们使用闭包来解决 this 的指向问题吗，如果用上了箭头函数就可以更完美的解决了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span>,</div><div class="line">  <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">foo2</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);  <span class="comment">// Object &#123;name: "Guoch"&#125;</span></div><div class="line">    &#125;, <span class="number">1000</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj.foo2();</div></pre></td></tr></table></figure></p>
+<p>　　可以看到，在 setTimeout 执行的函数中，本应该打印出在 Window，但是在这里 this 却指向了 obj，原因就在于，给 setTimeout 传入的函数（参数）是一个箭头函数。</p>
+<p>　　函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。根据例子我们理解一下这句话：在 obj.foo2() 执行的时候，当前的 this 指向 obj；在执行 setTimeout 时候，我们先是定义了一个匿名的箭头函数，关键点就在这，箭头函数内的 this 执行定义时所在的对象，就是指向定义这个箭头函数时作用域内的 this，也就是 obj.foo2 中的 this，即 obj；所以在执行箭头函数的时候，它的 this -&gt; obj.foo2 中的 this -&gt; obj；</p>
+<p>　　简单来说， 箭头函数中的 this 只和定义它时候的作用域的 this 有关，而与在哪里以及如何调用它无关，同时它的 this 指向是不可改变的。</p>
+<h1 id="call-apply-bind"><a href="#call-apply-bind" class="headerlink" title="call, apply, bind"></a>call, apply, bind</h1><hr>
+<h5 id="在-js-中，函数也是对象，同样也有一些方法，这里我们介绍三个方法，他们可以更改函数中的-this-指向："><a href="#在-js-中，函数也是对象，同样也有一些方法，这里我们介绍三个方法，他们可以更改函数中的-this-指向：" class="headerlink" title="　　在 js 中，函数也是对象，同样也有一些方法，这里我们介绍三个方法，他们可以更改函数中的 this 指向："></a>　　在 js 中，函数也是对象，同样也有一些方法，这里我们介绍三个方法，他们可以更改函数中的 this 指向：</h5><h4 id="·call"><a href="#·call" class="headerlink" title="　　·call"></a>　　·call</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fun.call(thisArg[, arg1[, arg2[, ...]]])</div></pre></td></tr></table></figure>
+<p>　　它会立即执行函数，第一个参数是指定执行函数中 this 的上下文，后面的参数是执行函数需要传入的参数；</p>
+<h4 id="·apply"><a href="#·apply" class="headerlink" title="　　·apply"></a>　　·apply</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fun.apply(thisArg[, [arg1, arg2, ...]])</div></pre></td></tr></table></figure>
+<p>　　它会立即执行函数，第一个参数是指定执行函数中 this 的上下文，第二个参数是一个数组，是传给执行函数的参数（与 call 的区别）；</p>
+<h4 id="·bind"><a href="#·bind" class="headerlink" title="　　·bind"></a>　　·bind</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = fun.bind(thisArg[, arg1[, arg2[, ...]]]);</div></pre></td></tr></table></figure>
+<p>　　它不会执行函数，而是返回一个新的函数，这个新的函数被指定了 this 的上下文，后面的参数是执行函数需要传入的参数；</p>
+<p>　　这三个函数其实大同小异，总的目的就是去指定一个函数的上下文（this），我们以 call 函数为例；<br>　　为一个普通函数指定 this<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo.call(obj);      <span class="comment">// Object &#123;name: "Guoch"&#125;</span></div></pre></td></tr></table></figure></p>
+<p>　　可以看到，在执行 foo.call(obj) 的时候，函数内的 this 指向了 obj 这个对象，成功；</p>
+<p>　　为对象中的方法指定一个 this<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch'</span>,</div><div class="line">  <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj2 = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch222222'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">obj.foo.call(obj2);     <span class="comment">// Object &#123;name: "Guoch222222"&#125;</span></div></pre></td></tr></table></figure></p>
+<p>　　可以看到，执行函数的时候这里的 this 指向了 obj2，成功；</p>
+<p>　　为构造函数指定 this<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch2222222'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person.call(obj, <span class="string">'Guoch'</span>);</div><div class="line"></div><div class="line"><span class="comment">// Uncaught TypeError: Person.call is not a constructor(…)</span></div></pre></td></tr></table></figure></p>
+<p>　　这里报了个错，原因是我们去 new 了 Person.call 函数，而非 Person ，这里的函数不是一个构造函数；</p>
+<p>　　换成 bind 试试：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch2222222'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Person2 = Person.bind(obj);</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person2(<span class="string">'Guoch'</span>);</div><div class="line"></div><div class="line"><span class="comment">// Person &#123;name: "Guoch"&#125;</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj);</div><div class="line"></div><div class="line"><span class="comment">// Object &#123;name: "Guoch2222222"&#125;</span></div></pre></td></tr></table></figure></p>
+<p>　　打印出来的是 Person 实例化出来的对象，而和 obj 没有关系，而 obj 也没有发生变化，说明，我们给 Person 指定 this 上下文并没有生效；</p>
+<p>　　因此可以得出： 使用 bind 给一个构造函数指定 this，在 new 这个构造函数的时候，bind 函数所指定的 this 并不会生效；</p>
+<p>　　当然 bind 不仅可以指定 this ，还能传入参数，我们来试试这个操作：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Guoch2222222'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Person2 = Person.bind(obj, <span class="string">'Guoch111111'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person2(<span class="string">'Guoch'</span>);</div><div class="line"></div><div class="line"><span class="comment">// Person &#123;name: "Guoch111111"&#125;</span></div></pre></td></tr></table></figure></p>
+<p>　　可以看到，虽然指定 this 不起作用，但是传入参数还是起作用了；</p>
+<h3 id="为箭头函数指定-this"><a href="#为箭头函数指定-this" class="headerlink" title="为箭头函数指定 this"></a>为箭头函数指定 this</h3><hr>
+<p>　　我们来定义一个全局下的箭头函数，因此这个箭头函数中的 this 必然会指向全局对象，如果用 call 方法改变 this 呢：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> afoo = <span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(a);</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">afoo(<span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// Window</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'qiutc'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">afoo.call(obj, <span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// Window</span></div></pre></td></tr></table></figure></p>
+<p>　　可以看到，这里的 call 指向 this 的操作并没有成功，所以可以得出： 箭头函数中的 this 在定义它的时候已经决定了（执行定义它的作用域中的 this），与如何调用以及在哪里调用它无关，包括 (call, apply, bind) 等操作都无法改变它的 this。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/08/JavaScript数组去重/" rel="next" title="JavaScript 数组去重">
+                <i class="fa fa-chevron-left"></i> JavaScript 数组去重
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/28/ajax学习与模块封装实现/" rel="prev" title="ajax 学习笔记">
+                ajax 学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/youngpan.jpg"
+               alt="youngpan" />
+          <p class="site-author-name" itemprop="name">youngpan</p>
+          <p class="site-description motion-element" itemprop="description">做一个有态度的人。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">随记</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fingerpan" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa base-color beat-love-icon fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngpan</span>
+</div>
+<div clasee="power-by">
+ <b class="music">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </b>
+    <span>Published with <a href="https://hexo.io" target="_blank">Hexo</a> using <a clasee="theme-link" href="http://theme-next.iissnan.com/" target="_blank">NexT</a> theme, hosted on Github.</span>
+</div>
+
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
