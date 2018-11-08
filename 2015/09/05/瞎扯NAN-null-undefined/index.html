@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/09/05/瞎扯NAN-null-undefined/index.html">
 <meta property="og:site_name" content="youngpan">
 <meta property="og:description" content="NaN,null,undefined 到底干啥子的。太极讲阴阳，八卦论黑白，而机器，则是0和1之间的博弈。机器硬件要运行，离不开软件编程语言这个软组织。命令只有是与否，事物真和假之分。从这点上。任何语言在设计上都遵循这一点。Brendan Eich只花费了1周的时间就打造出了js，也离不开这一点。NaN,null,undefined都是这个逻辑的体现。今天，我就来瞎扯一下NaN,null,und">
-<meta property="og:updated_time" content="2017-02-10T14:57:21.513Z">
+<meta property="og:updated_time" content="2018-11-08T12:21:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="瞎扯NAN,null,undefined">
 <meta name="twitter:description" content="NaN,null,undefined 到底干啥子的。太极讲阴阳，八卦论黑白，而机器，则是0和1之间的博弈。机器硬件要运行，离不开软件编程语言这个软组织。命令只有是与否，事物真和假之分。从这点上。任何语言在设计上都遵循这一点。Brendan Eich只花费了1周的时间就打造出了js，也离不开这一点。NaN,null,undefined都是这个逻辑的体现。今天，我就来瞎扯一下NaN,null,und">
@@ -312,8 +312,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/my-Bullshit/" itemprop="url" rel="index">
-                    <span itemprop="name">my Bullshit</span>
+                  <a href="/categories/my-blather/" itemprop="url" rel="index">
+                    <span itemprop="name">my blather</span>
                   </a>
                 </span>
 
@@ -366,22 +366,24 @@
 声明一个字符串类型的a:    char a;   // a 的数据类型是字符串
 </code></pre><p>所以，当我们想要知道变量a类型的时候，在强类型的语言中我们可以准确获得，因为我们已经声明了类型。但是在javascript中，我们并不能知道，因为我们只是声明了变量，也没有赋值。怎么办？js使用一个新的数据类型来对这种情况进行赋值表示，也就是我们的undefined。所以，我一直这么理解undefined</p>
 <ul>
-<li><em>undefined</em> 是一种数据类型，表示变量未定义或未赋值，或者对象的属性和方法为未定义。</li>
+<li><em>undefined</em> 是一种数据类型，表示变量未定义，或者对象的属性和方法为未定义。</li>
 </ul>
-<p><strong>现在我们想想，到底这个undefined 存在有什么意义？如果吗没有它会这么样？</strong></p>
+<p><strong>现在我们想想，到底这个undefined 存在有什么意义？如果没有它会这么样？</strong></p>
 <ul>
 <li>如果没有undefined，那么我们<code>typeof</code>一个没有赋值的变量a, a到底显示什么？ 报错？ 还是..？</li>
 <li>如果我们引用一个为定义的对象属性？ 我们也会选择报错吗？ 如果你是要语言设计作者，你会这么设计？</li>
 </ul>
+<p>总结： undefined表示一个没有定义的变量。</p>
 <h3 id="2-NaN"><a href="#2-NaN" class="headerlink" title="2. NaN"></a>2. <em>NaN</em></h3><p>先来看看一些有趣的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typeof NaN     // number</div><div class="line">NaN === NaN    // false</div><div class="line">Boolean(NaN)   // false</div></pre></td></tr></table></figure></p>
 <p>我们都知道，js中有隐性转换这个特性，而隐性转换的成功率到底要为多少？没有疑问，js设计成百分之百，如果不是百分之百，那么选择报错也是跟尴尬的事情。js追求要弱类型，要灵活，那就彻底一点的灵活。<br>可以说,NaN也是为了这个而服务的。它代表着一个非数字。如果一个数据实在找不到可行的转换规则，那么就直接返回一个NaN。这个特殊的值，可以减少很多报错。</p>
 <p>要注意: <code>NaN === NaN</code> 这个表达式为<code>false</code>,</p>
 <h3 id="3-null"><a href="#3-null" class="headerlink" title="3. null"></a>3. <em>null</em></h3><p>同样的，我们看看一下查询结果：</p>
 <pre><code>typeof null       // &apos;object&apos;;
 null === null     // true;
-null === {}       //false;
+null === {}       // false;
+Number(null) === 0 // true
 </code></pre><ul>
-<li>查询null的类型是object。直接说null类型就是object么？<br>其实也可以这么说吧，但有有点牵强。我个人的观点是： null 是一个特殊的，特定的对象，也就是说内存地址是固定的对象。用来形容一个空/非对象数据类型。这里的非对象并不是指简单类型。也不是等于一个<code>{}</code>;</li>
+<li>查询null的类型是object。直接说null类型就是object么？<br>其实也可以这么说吧，但有有点牵强。我个人的观点是： null 是一个特殊的，特定的对象，也就是说内存地址是固定的对象。用来形容一个空/非对象数据类型。这里的非对象并不是指简单类型。也不是等于一个<code>{}</code>;<br>null更多时候代表这一个值。占位或者是说有特定的含义值。跟undefined 对比，更加特殊。undefined代表未定义，而null则更多有已经定义了，但是这个值为空的意思。</li>
 </ul>
 
       
@@ -490,7 +492,7 @@ null === {}       //false;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">随记</span>
               </a>
             </div>
@@ -499,7 +501,7 @@ null === {}       //false;
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -508,7 +510,7 @@ null === {}       //false;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -562,7 +564,7 @@ null === {}       //false;
 <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa base-color beat-love-icon fa-heart"></i>
   </span>
